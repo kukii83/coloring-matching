@@ -113,7 +113,7 @@ This application provides a simple command-line interface that accepts dynamic m
 
 ---
 
-## 2. Algorithm Used: Vogel's Approximation Method (VAM)
+## 2. Algorithm 
 
 While classic methods such as the **Northwest Corner Method (NCM)** and the **Least Cost Method (LCM)** find basic feasible solutions quickly, **Vogel's Approximation Method (VAM)** is an advanced heuristic that yields solutions very close to (and often identical to) the global optimal solution.
 
@@ -262,3 +262,4 @@ pip install numpy
 
 AI Usage disclosure:
 https://claude.ai/share/63f4fe88-00c8-4c94-a4ab-b04c36938809
+https://share.gemini.google/Dp4gbkIV948U
