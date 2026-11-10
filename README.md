@@ -15,6 +15,85 @@ In this project, we will be basing our programs based on two materials:
 - Coloring 
 - Matching
 
+# Sudoku Solver using Graph Coloring
+
+A Sudoku solver that models the puzzle as a **graph coloring problem** and solves it with **backtracking** and the **MRV (DSATUR-style) heuristic**.
+
+## 1. Graph Model
+
+| Sudoku concept | Graph concept |
+|---|---|
+| Cell (81 total) | Vertex |
+| Two cells sharing a row, column, or 3×3 box | Edge |
+| Digit 1-9 | Color |
+| Given clue | Pre-colored vertex |
+| Valid solution | Proper coloring (no edge connects two same-colored vertices) |
+
+Each vertex has degree 20 (8 in its row + 8 in its column + 4 more in its box). The goal is to color all 81 vertices with 9 colors so that no two adjacent vertices share a color.
+
+## 2. Algorithm
+
+### Step 1: Build the graph
+For every pair of cells, add an edge if they share a row, column, or box. This is done once.
+
+### Step 2: Validate the pre-coloring
+Check all clue vertices. If two adjacent clues have the same digit, the puzzle is invalid and the solver stops immediately.
+
+### Step 3: Choose the next vertex (MRV / DSATUR idea)
+For each uncolored vertex, compute its available colors:
+
+    available(v) = {1..9} - {color(u) : u is a neighbor of v}
+
+Pick the vertex with the **fewest** available colors. This is the most constrained vertex (highest saturation in DSATUR terms). If a vertex has 0 options we hit a dead end right away, and if it has 1 option the move is forced.
+
+### Step 4: Try colors and recurse
+Assign each available color in turn and recurse on the next vertex.
+
+### Step 5: Backtrack
+If a vertex has no available colors, or every color tried led to a dead end, reset the vertex to uncolored and return to the previous vertex to try its next color.
+
+### Step 6: Terminate
+- **Success:** no uncolored vertex is left.
+- **Failure:** every option at the first choice has been exhausted, so no valid coloring exists.
+
+## 3. Pseudocode
+
+    solve(color):
+        v, options = uncolored vertex with fewest available colors
+        if v is None:
+            return True                  # all vertices colored
+        for d in options:
+            color[v] = d
+            if solve(color):
+                return True
+            color[v] = 0                 # undo (backtrack)
+        return False                     # dead end
+
+## 4. Complexity
+
+- Graph construction: O(81²), a constant for a fixed 9×9 board.
+- Worst case search: exponential, since Sudoku (generalized to n×n) is NP-complete.
+- In practice the MRV heuristic prunes the search heavily. Typical 9×9 puzzles are solved in milliseconds.
+
+## 5. Sample Cases
+
+| Case | Expected | Notes |
+|---|---|---|
+| Puzzle from lecture slide | Success | ~1661 tries. The clues allow more than one solution, so the output may differ from the slide. |
+| Classic easy puzzle | Success | 51 tries |
+| Empty grid | Success | Finds one of many valid solutions |
+| Two 5s in the same row | Fail | Invalid clues, detected before searching |
+| Row 1 has 1-8, column 9 has a 9 | Fail | Clues are consistent, but cell (r1,c9) has no available color, so no solution exists |
+
+The last two cases show two kinds of failure: invalid input versus a search with no solution.
+
+## 6. How to Run
+
+    python3 sudoku_coloring.py
+
+The program prints each puzzle, then either the solved grid or the reason it failed.
+
+---
 
 # Transportation Problem Solver using Vogel's Approximation Method (VAM)
 
@@ -180,3 +259,6 @@ pip install numpy
 
 
 ---
+
+AI Usage disclosure:
+https://claude.ai/share/63f4fe88-00c8-4c94-a4ab-b04c36938809
