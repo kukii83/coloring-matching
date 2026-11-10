@@ -9,3 +9,7 @@ Group 5 Members:
 - Hussein Mohammad Mahsun/5025251170 (TheDelightOFice)
 
 ---
+
+In this project, we will be basing our programs based on two materials:
+-Coloring 
+-Matching
