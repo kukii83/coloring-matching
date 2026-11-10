@@ -116,14 +116,7 @@ pip install numpy
 ```
 
 **Sample output 1:**
-- Total Transport Cost: `6630`
-- Active Routes:
-  - Supplier 1 -> Customer 1: 50 units @ 19
-  - Supplier 1 -> Customer 4: 20 units @ 10
-  - Supplier 2 -> Customer 2: 20 units @ 30
-  - Supplier 2 -> Customer 3: 70 units @ 40
-  - Supplier 3 -> Customer 2: 60 units @ 8
-  - Supplier 3 -> Customer 4: 80 units @ 20
+<img width="343" height="238" alt="image" src="https://github.com/user-attachments/assets/24ee58a4-381c-4366-ab1a-7c2ae3466766" />
 
 ---
 
@@ -151,7 +144,8 @@ pip install numpy
 ```
 
 **Sample Output 2:**
-- Total Transport Cost: `4550`
+<img width="343" height="225" alt="image" src="https://github.com/user-attachments/assets/f60b7f17-9f3d-4242-8ebf-3ceafb02fd50" />
+
 
 ---
 
@@ -179,6 +173,7 @@ pip install numpy
 ```
 
 **Sample Output 3:**
-- Total Transport Cost: `3280`
+<img width="337" height="322" alt="image" src="https://github.com/user-attachments/assets/440cf483-de52-47b4-9e04-218e7c889952" />
+
 
 ---
