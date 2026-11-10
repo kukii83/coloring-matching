@@ -11,5 +11,6 @@ Group 5 Members:
 ---
 
 In this project, we will be basing our programs based on two materials:
--Coloring 
--Matching
+
+- Coloring 
+- Matching
