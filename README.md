@@ -142,6 +142,7 @@ VAM operates on the principle of **opportunity cost** or **penalty cost**:
    - Repeat Steps 1 through 4 on remaining active cells until all supplies and demands are fully exhausted.
 
 6. **Compute Total Cost:**
+   
 $$
 \text{Total Cost} = \sum_{i=1}^{m} \sum_{j=1}^{n} (\text{Allocated Units}_{ij} \times \text{Unit Cost}_{ij})
 $$
